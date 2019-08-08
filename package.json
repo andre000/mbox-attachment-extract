@@ -1,6 +1,6 @@
 {
   "name": "mbox-attachment-extract",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,8 @@
     "chalk": "^2.4.2",
     "mailparser": "^2.7.1",
     "meow": "^5.0.0",
-    "node-mbox": "^1.0.0"
+    "node-mbox": "^1.0.0",
+    "ora": "^3.4.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
