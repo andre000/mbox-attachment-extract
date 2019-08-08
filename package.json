@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Andre L. Adriano",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "mailparser": "^2.7.1",
     "node-mbox": "^1.0.0"
