@@ -57,11 +57,7 @@ module.exports = (mboxPath, attachmentPath, pattern = false, filenameAsSubject =
 
 
   mbox.on('end', () => {
-    loader.succeed(`${chalk.green.bold('All files extracted!')}
-  Total email parsed: ${chalk.bold(count)}
-  Total files extracted: ${chalk.bold(countFile)}
-    `);
-    process.exit(0);
+    loader.succeed(`${chalk.green.bold('All files extracted!')}\n`);
   });
 
   mbox.on('error', (err) => {
