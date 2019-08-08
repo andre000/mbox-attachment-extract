@@ -14,11 +14,15 @@ module.exports = (mboxPath, attachmentPath, pattern = false) => {
   let count = 0;
   let countFile = 0;
 
-  const loadingMessage = () => ` ${chalk.bold('mbox-attachment-extract')}
+  const loadingMessage = () => `${chalk.bold('mbox-attachment-extract')}
   ${chalk.cyan('EMAIL:')} ${count}
   ${chalk.cyan('ATTACHMENTS:')} ${countFile}
   `;
   const loader = ora(loadingMessage());
+
+  if (!fs.existsSync(attachmentPath)) {
+    fs.mkdirSync(attachmentPath);
+  }
 
   mbox.on('message', async (message) => {
     loader.start(loadingMessage());
