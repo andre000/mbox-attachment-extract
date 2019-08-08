@@ -21,7 +21,7 @@ ${chalk.underline.green('Example:')}
 `;
 
 const cli = meow(helpMessage, {
-  hardRejection: false,
+  hardRejection: true,
   flags: {
     pattern: {
       type: 'string',
