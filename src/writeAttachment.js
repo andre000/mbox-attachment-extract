@@ -3,6 +3,7 @@ const fs = require('fs');
 
 module.exports = (parsedMessage, attachmentPath, filenameAsSubject) => (file, i) => {
   let { filename } = file;
+  const pathToSave = attachmentPath.match(/\/$/) ? attachmentPath : `${attachmentPath}/`;
 
   if (filenameAsSubject) {
     const ext = path.extname(filename);
@@ -14,5 +15,5 @@ module.exports = (parsedMessage, attachmentPath, filenameAsSubject) => (file, i)
       : `${from[1]}_${subject.replace(/\W+|\.+/g, '_')}_${i}${ext}`;
   }
 
-  fs.writeFileSync(`${attachmentPath}${filename}`, file.content);
+  fs.writeFileSync(`${pathToSave}${filename}`, file.content);
 };
