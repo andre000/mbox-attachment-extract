@@ -12,10 +12,12 @@ const Mbox = require('node-mbox');
 const helpMessage = `${chalk.bold('mbox-attachment-extract')}
 
 ${chalk.underline.green('Usage:')}
-  $ mbox-attachment-extract ${chalk.italic.greenBright('<<path-to-mbox-file>>')} ${chalk.italic.cyanBright('<<path-to-extracted-files>>')}
+  $ mbox-attachment-extract ${chalk.italic.greenBright('<<path-to-mbox-file>>')} ${chalk.italic.cyanBright('<<path-to-extracted-files>>')} ${chalk.gray('Defaults to "./"')} 
 
 ${chalk.underline.green('Options:')}
 ${chalk.gray('--pattern, -p')} Regex to filter attachments. Default: ''
+${chalk.gray('--help')} Prints this help text
+${chalk.gray('--version')} Prints the current version
 
 ${chalk.underline.green('Example:')}
   mbox-attachment-extract  ${chalk.italic.greenBright('./inbox.mbox')} ${chalk.italic.cyanBright('./files/')}
