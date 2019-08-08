@@ -6,7 +6,7 @@ const chalk = require('chalk');
 
 const writeAttachment = require('./writeAttachment');
 
-module.exports = (mboxPath, attachmentPath, pattern = false) => {
+module.exports = (mboxPath, attachmentPath, pattern = false, filenameAsSubject = false) => {
   const stream = fs.createReadStream(mboxPath);
   const mbox = new Mbox(stream);
   const fileFilter = pattern ? new RegExp(pattern) : false;
@@ -45,7 +45,7 @@ module.exports = (mboxPath, attachmentPath, pattern = false) => {
         return true;
       }
 
-      attachment.forEach(writeAttachment(parsedMessage, attachmentPath));
+      attachment.forEach(writeAttachment(parsedMessage, attachmentPath, filenameAsSubject));
       countFile += attachment.length;
 
       return true;
