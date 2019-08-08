@@ -1,7 +1,8 @@
 const fs = require('fs');
-const path = require('path');
 const { simpleParser } = require('mailparser');
 const Mbox = require('node-mbox');
+
+const writeAttachment = require('./writeAttachment');
 
 module.exports = (mboxPath, attachmentPath, pattern = false) => {
   const stream = fs.createReadStream(mboxPath);
@@ -36,15 +37,7 @@ module.exports = (mboxPath, attachmentPath, pattern = false) => {
       return true;
     }
 
-    attachment.forEach((file, i) => {
-      const ext = path.extname(file.filename);
-      const from = parsedMessage.from.text.match(/@(.+?)\./);
-      const filename = `${from[1]}_${parsedMessage.subject.replace(/\W+|\.+/g, '_')}_${i}`.length > 200
-        ? `${from[1]}_${parsedMessage.subject.replace(/\W+|\.+/g, '_')}_${i}`.substr(0, 200)
-        : `${from[1]}_${parsedMessage.subject.replace(/\W+|\.+/g, '_')}_${i}`;
-
-      fs.writeFileSync(`${attachmentPath}${filename}${ext}`, file.content);
-    });
+    attachment.forEach(writeAttachment(parsedMessage, attachmentPath));
     countFile += attachment.length;
 
     return true;
