@@ -24,6 +24,7 @@ module.exports = (mboxPath, attachmentPath, pattern = false) => {
     fs.mkdirSync(attachmentPath);
   }
 
+  console.clear();
   mbox.on('message', async (message) => {
     loader.start(loadingMessage());
 
