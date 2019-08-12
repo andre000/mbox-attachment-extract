@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint . --fix"
   },
   "bin": {
     "mbox-attachment-extract": "./index.js"
   },
-  "keywords": ["mbox"],
+  "keywords": [
+    "mbox"
+  ],
   "author": {
     "name": "André L. Adriano",
     "email": "andre@dev-next.com"
@@ -35,11 +38,18 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
+    "husky": "^3.0.3",
     "jest": "^24.8.0",
     "rimraf": "^2.6.3"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andre000/mbox-attachment-extract.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
   }
 }
