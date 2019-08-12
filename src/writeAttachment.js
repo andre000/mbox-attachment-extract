@@ -3,7 +3,9 @@ const fs = require('fs');
 
 module.exports = (parsedMessage, attachmentPath, filenameAsSubject) => (file, i) => {
   let { filename } = file;
-  const pathToSave = attachmentPath.match(/\/$/) ? attachmentPath : `${attachmentPath}/`;
+  const isWin = process.platform === 'win32';
+  const slash = isWin ? '\\' : '/';
+  const pathToSave = attachmentPath.match(/[/\\]$/) ? attachmentPath : `${attachmentPath}${slash}`;
 
   if (filenameAsSubject) {
     const ext = path.extname(filename);
