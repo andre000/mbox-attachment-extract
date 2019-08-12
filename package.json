@@ -1,13 +1,24 @@
 {
   "name": "mbox-attachment-extract",
   "version": "1.0.3",
-  "description": "",
+  "description": "Node.js cli tool to extract attachments from .mbox files",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "jest"
   },
-  "author": "Andre L. Adriano",
+  "keywords": ["mbox"],
+  "author": {
+    "name": "André L. Adriano",
+    "email": "andre@dev-next.com"
+  },
+  "bugs": {
+    "url": "https://github.com/andre000/mbox-attachment-extract/issues"
+  },
+  "files": [
+    "index.js",
+    "src/"
+  ],
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.2",
@@ -23,5 +34,9 @@
     "eslint-plugin-import": "^2.18.2",
     "jest": "^24.8.0",
     "rimraf": "^2.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andre000/mbox-attachment-extract.git"
   }
 }
