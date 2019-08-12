@@ -1,3 +1,4 @@
+/* eslint-disable no-continue */
 /* eslint-disable no-restricted-syntax */
 const fs = require('fs');
 const { simpleParser } = require('mailparser');
@@ -26,7 +27,9 @@ module.exports = async (mboxPath, attachmentPath, pattern = false, filenameAsSub
     fs.mkdirSync(attachmentPath);
   }
 
-  const mboxIterator = pEvent.iterator(mbox, 'message', 'end');
+  const mboxIterator = pEvent.iterator(mbox, 'message', {
+    resolutionEvents: ['finish'],
+  });
 
   mbox.on('error', (err) => {
     loader.fail(`${chalk.redBright.bold('Error: ')} ${err}`);
@@ -40,7 +43,7 @@ module.exports = async (mboxPath, attachmentPath, pattern = false, filenameAsSub
 
       const parsedMessage = await simpleParser(message);
       if (parsedMessage.attachments.length === 0) {
-        mboxIterator.return();
+        continue;
       }
       const attachment = parsedMessage.attachments.filter((att) => {
         if (!fileFilter) return !!att.filename;
@@ -48,11 +51,11 @@ module.exports = async (mboxPath, attachmentPath, pattern = false, filenameAsSub
         return canBeExtracted;
       });
       if (attachment.length === 0) {
-        mboxIterator.return();
+        continue;
       }
       attachment.forEach(writeAttachment(parsedMessage, attachmentPath, filenameAsSubject));
       countFile += attachment.length;
-      mboxIterator.return();
+      continue;
     }
   } catch (err) {
     mbox.emit('error', err);
