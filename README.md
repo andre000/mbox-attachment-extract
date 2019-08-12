@@ -1,4 +1,5 @@
 # mbox-attachment-extract
+[![buddy pipeline](https://app.buddy.works/dev-next/mbox-attachment-extract/pipelines/pipeline/204178/badge.svg?token=97bf4dcd17a1b58262a8a015c9528b9846ee0998e240f0de9322008e604b7df7 "buddy pipeline")](https://app.buddy.works/dev-next/mbox-attachment-extract/pipelines/pipeline/204178)
 
 This is a cli tool to extract attachments from .mbox files.
 
