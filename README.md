@@ -24,7 +24,7 @@ Parameters:
 
 ## Demo
 
-![demo](demo.svg)
+![demo](https://github.com/andre000/mbox-attachment-extract/raw/master/demo.svg?sanitize=true)
 
 ## Tests
 
