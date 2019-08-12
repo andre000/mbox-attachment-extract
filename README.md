@@ -6,7 +6,7 @@ This is a cli tool to extract attachments from .mbox files.
 
 ## Installation
 
-// TODO
+Install with npm: `npm i mbox-attachment-extract -g`
 
 ## Usage
 
