@@ -3,6 +3,8 @@
 
 const meow = require('meow');
 const chalk = require('chalk');
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
 
 const mboxParser = require('./src/mboxParser');
 
@@ -46,3 +48,4 @@ if (!mboxPath) {
 }
 
 mboxParser(mboxPath, attachmentPath, pattern, filenameAsSubject);
+updateNotifier({ pkg }).notify();

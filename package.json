@@ -1,6 +1,6 @@
 {
   "name": "mbox-attachment-extract",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "Node.js cli tool to extract attachments from .mbox files",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,8 @@
     "node-mbox": "^1.0.0",
     "ora": "^3.4.0",
     "p-event": "^4.1.0",
-    "sanitize-filename": "^1.6.2"
+    "sanitize-filename": "^1.6.2",
+    "update-notifier": "^3.0.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
