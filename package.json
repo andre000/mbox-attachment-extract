@@ -23,7 +23,8 @@
   },
   "files": [
     "index.js",
-    "src/"
+    "src/",
+    "!src/__mocks__/"
   ],
   "license": "MIT",
   "dependencies": {
