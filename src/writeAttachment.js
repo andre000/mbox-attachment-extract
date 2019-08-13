@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const sanitize = require('sanitize-filename');
 
 module.exports = (parsedMessage, attachmentPath, filenameAsSubject) => (file, i) => {
   let { filename } = file;
@@ -12,10 +13,8 @@ module.exports = (parsedMessage, attachmentPath, filenameAsSubject) => (file, i)
     const from = parsedMessage.from.text.match(/@(.+?)\./);
     const subject = parsedMessage.subject ? parsedMessage.subject.replace(/\W+|\.+/g, '_') : '_';
 
-    filename = `${from[1]}_${subject.replace(/\W+|\.+/g, '_')}_${i}`.length > 200
-      ? `${from[1]}_${subject.replace(/\W+|\.+/g, '_')}_${i}`.substr(0, 200)
-      : `${from[1]}_${subject.replace(/\W+|\.+/g, '_')}_${i}${ext}`;
+    filename = sanitize(`${from[1]}_${subject}_${i}${ext}`);
   }
 
-  fs.writeFileSync(`${pathToSave}${filename}`, file.content);
+  fs.writeFileSync(`${pathToSave}${sanitize(filename)}`, file.content);
 };
