@@ -1,6 +1,6 @@
 {
   "name": "mbox-attachment-extract",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Node.js cli tool to extract attachments from .mbox files",
   "main": "index.js",
   "scripts": {
